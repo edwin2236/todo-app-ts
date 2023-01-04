@@ -1,17 +1,16 @@
 import { inject, injectable } from 'inversify'
-import Todo from '../data/models/todo'
-import type { TodoRepository } from '../data/repositories/todoRepository'
-import TYPES from '../core/types'
+import type { TodoRepository } from 'app/data/repositories/todoRepository'
+import TYPES, { TodoType } from 'app/core/types'
 
 @injectable()
 export default class UpdateTodoUseCase {
-  #repository: TodoRepository
+  private readonly repository: TodoRepository
 
   constructor(@inject(TYPES.TodoRepository) repository: TodoRepository) {
-    this.#repository = repository
+    this.repository = repository
   }
 
-  async call(todo: Todo) {
-    return this.#repository.update(todo)
+  async call(todo: TodoType): Promise<TodoType> {
+    return await this.repository.update(todo)
   }
 }

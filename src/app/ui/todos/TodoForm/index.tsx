@@ -1,30 +1,32 @@
 import { AddCircle as AddCircleIcon } from '@mui/icons-material'
 import { IconButton, InputBase } from '@mui/material'
-import { ChangeEvent, FC, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { StyledPaper } from './styles'
+import { SaveTodoType } from 'app/core/types'
 
 type TodoFormProps = {
-  onSubmit: (todo: JsonTodoType) => void
+  onSubmit: (todo: SaveTodoType) => Promise<void>
 }
 
-const TodoForm = ({ onSubmit }: TodoFormProps) => {
+const TodoForm = ({ onSubmit }: TodoFormProps): JSX.Element => {
   const [name, setName] = useState('')
 
-  const handleSubmit = (event: FormEvent<HTMLInputElement>) => {
+  const handleSubmit = async (
+    event: FormEvent<HTMLInputElement>
+  ): Promise<void> => {
     event.preventDefault()
 
     if (name.trim() !== '') {
       setName('')
-      onSubmit({
+      await onSubmit({
         userId: 1,
-        id: undefined,
         title: name.trim(),
         completed: false,
       })
     }
   }
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setName(event.target.value)
   }
 

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Paper, PaperProps } from '@mui/material'
+import { Paper } from '@mui/material'
 
 export const StyledPaper = styled(Paper)`
   margin: 40px 0 20px 0;

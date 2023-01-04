@@ -1,6 +1,6 @@
 import { Container, Typography } from '@mui/material'
 
-export default function AboutPage() {
+export default function AboutPage(): JSX.Element {
   return (
     <Container maxWidth="sm">
       <Typography variant="h3">About Page</Typography>

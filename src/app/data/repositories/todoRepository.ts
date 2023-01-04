@@ -1,8 +1,8 @@
-import Todo from '../models/todo'
+import { SaveTodoType, TodoType } from 'app/core/types'
 
 export interface TodoRepository {
-  getAll(): Promise<Todo[]>
-  add(todo: JsonTodoType): Promise<Todo>
-  update(todo: Todo): Promise<Todo>
-  delete(todo: Todo): Promise<Todo>
+  getAll: () => Promise<TodoType[]>
+  add: (todo: SaveTodoType) => Promise<TodoType>
+  update: (todo: TodoType) => Promise<TodoType>
+  delete: (todo: TodoType) => Promise<TodoType>
 }

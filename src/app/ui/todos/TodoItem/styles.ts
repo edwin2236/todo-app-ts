@@ -16,7 +16,7 @@ type StyledTypographyProps = {
 }
 
 export const StyledTypography = styled(Typography)`
-  text-decoration: ${(prop: StyledTypographyProps) =>
+  text-decoration: ${(prop: StyledTypographyProps): string =>
     prop.completed ? 'line-through' : 'inherit'};
   width: 100%;
 `

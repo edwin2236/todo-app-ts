@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "Components/*": ["./src/app/ui/components/*"],
+      "app/*": ["./src/app/*"]
+    },
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -14,7 +19,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "types": ["reflect-metadata"],
+    "types": ["reflect-metadata", "vite/client"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "jsx": "react-jsx"

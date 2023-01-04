@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Header from './components/Header'
-import AboutPage from './about/AboutPage'
-import BlogPage from './blog/BlogPage'
-import TodoPage from './todos/TodoPage'
-import UserPage from './users/UserPage'
-import Router from '../core/utils/router'
+import Header from 'Components/Header'
+import TodoPage from 'app/ui/todos/TodoPage'
+import AboutPage from 'app/ui/about/AboutPage'
+import BlogPage from 'app/ui/blog/BlogPage'
+import UserPage from 'app/ui/users/UserPage'
+import Router from 'app/core/utils/router'
 
-export default function App() {
+export default function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Header />

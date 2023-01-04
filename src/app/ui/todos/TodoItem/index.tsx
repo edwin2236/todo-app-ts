@@ -5,20 +5,19 @@ import {
 } from '@mui/icons-material'
 import { Checkbox, IconButton } from '@mui/material'
 import { ChangeEvent, useState } from 'react'
-import TYPES from '../../../core/types'
-import Todo from '../../../data/models/todo'
-import { TodoRepository } from '../../../data/repositories/todoRepository'
-import container from '../../../di/inversify.config'
-import DeleteTodoUseCase from '../../../domain/DeleteTodoUseCase'
-import UpdateTodoUseCase from '../../../domain/UpdateTodoUseCase'
+import TYPES, { TodoType } from 'app/core/types'
+import { TodoRepository } from 'app/data/repositories/todoRepository'
+import container from 'app/di/inversify.config'
+import DeleteTodoUseCase from 'app//domain/DeleteTodoUseCase'
+import UpdateTodoUseCase from 'app/domain/UpdateTodoUseCase'
 import { StyledCard, StyledTypography } from './styles'
 
 type TodoItemProps = {
-  initialValue: Todo
+  initialValue: TodoType
   onDelete: (todoId: number) => void
 }
 
-function TodoItem({ initialValue, onDelete }: TodoItemProps) {
+function TodoItem({ initialValue, onDelete }: TodoItemProps): JSX.Element {
   const [todo, setTodo] = useState(initialValue)
   const label = { inputProps: { 'aria-label': todo.title } }
 
@@ -29,12 +28,16 @@ function TodoItem({ initialValue, onDelete }: TodoItemProps) {
     container.get<TodoRepository>(TYPES.TodoRepository)
   )
 
-  const handleChange = async (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = async (
+    event: ChangeEvent<HTMLInputElement>
+  ): Promise<void> => {
     const newValue = { ...todo, completed: event.target.checked }
-    await updateTodoUseCase.call(newValue).then(() => setTodo(newValue))
+    await updateTodoUseCase.call(newValue).then(() => {
+      setTodo(newValue)
+    })
   }
 
-  const handleDelete = async () => {
+  const handleDelete = async (): Promise<void> => {
     await deleteTodoUseCase.call(todo).then(() => {
       onDelete(todo.id)
     })

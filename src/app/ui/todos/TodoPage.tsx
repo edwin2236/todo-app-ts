@@ -1,10 +1,11 @@
 import { Container } from '@mui/material'
-import useTodos from './hooks/useTodos'
-import TodoForm from './TodoForm'
-import TodoItem from './TodoItem'
+import useTodos from 'app/ui/todos/hooks/useTodos'
+import TodoForm from 'app/ui/todos/TodoForm'
+import TodoItem from 'app/ui/todos/TodoItem'
 
-export default function TodoPage() {
+export default function TodoPage(): JSX.Element {
   const { todos, addTodo, deleteTodo } = useTodos()
+
   return (
     <Container maxWidth="sm">
       <TodoForm onSubmit={addTodo} />

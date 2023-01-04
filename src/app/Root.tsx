@@ -1,8 +1,9 @@
 import { StyledEngineProvider } from '@mui/material'
-import App from './ui/App'
-import './di/inversify.config'
+import App from 'app/ui/App'
 
-export default function Root() {
+import 'app/di/inversify.config'
+
+export default function Root(): JSX.Element {
   return (
     <StyledEngineProvider>
       <App />

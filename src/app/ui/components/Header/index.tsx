@@ -11,7 +11,7 @@ import {
   Typography,
 } from '@mui/material'
 import { StyledAppBar, StyledRouterLink } from './styles'
-import Router from '../../../core/utils/router'
+import Router from 'app/core/utils/router'
 
 const pages = [
   { name: 'Users', path: Router.users },
@@ -19,14 +19,14 @@ const pages = [
   { name: 'About', path: Router.about },
 ]
 
-export default function Header() {
+export default function Header(): JSX.Element {
   const [anchorElNav, setAnchorElNav] = useState(null)
 
-  const handleOpenNavMenu = (event) => {
+  const handleOpenNavMenu = (event: any): void => {
     setAnchorElNav(event.currentTarget)
   }
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (): void => {
     setAnchorElNav(null)
   }
 
